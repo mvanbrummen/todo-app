@@ -13,14 +13,20 @@
     </form>
 
     <ul>
-      <li v-for="(todo, idx) in todos" :key="idx">
-        {{ todo.text }}
-      </li>
+      <todo-item
+        v-for="(todo, idx) in todos"
+        :key="idx"
+        :text="todo.text"
+        @remove="removeTodo(idx)"
+      >
+      </todo-item>
     </ul>
   </div>
 </template>
 
 <script>
+import TodoItem from "./TodoItem.vue";
+
 export default {
   name: "Todo",
   data() {
@@ -39,6 +45,12 @@ export default {
       });
       this.newTodoText = "";
     },
+    removeTodo(idx) {
+      this.todos.splice(idx, 1);
+    },
+  },
+  components: {
+    TodoItem,
   },
 };
 </script>
@@ -50,9 +62,6 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  margin: 0 10px;
 }
 a {
   color: #42b983;

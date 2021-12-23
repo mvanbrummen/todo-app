@@ -1,17 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Todo msg="TODO List"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <Todo msg="TODO List" />
 </template>
 
 <script>
-import Todo from './components/Todo.vue'
+import Todo from "./components/Todo.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-   Todo 
-  }
-}
+    Todo,
+  },
+};
 </script>
 
 <style>
