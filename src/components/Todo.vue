@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg }} ({{ todoCount }})</h1>
 
     <form v-on:submit.prevent="addNewTodo">
       <label for="new-todo">Add a todo</label>
@@ -37,6 +37,11 @@ export default {
   },
   props: {
     msg: String,
+  },
+  computed: {
+    todoCount() {
+      return this.todos.length;
+    },
   },
   methods: {
     addNewTodo() {
