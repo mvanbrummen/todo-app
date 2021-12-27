@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
-    <h1 class="message">{{ msg }} ({{ todoCount }})</h1>
+    <h1 class="message">{{ msg }} ({{ getTodoCount() }})</h1>
 
-    <form v-on:submit.prevent="addNewTodo">
+    <form v-on:submit.prevent="onSubmitTodo">
       <label for="new-todo">Add a todo</label>
       <input
         v-model="newTodoText"
@@ -14,10 +14,10 @@
 
     <ul>
       <todo-item
-        v-for="(todo, idx) in todos"
+        v-for="(todo, idx) in getTodos()"
         :key="idx"
         :text="todo.text"
-        @remove="removeTodo(idx)"
+        @remove="onRemoveTodo(idx)"
       >
       </todo-item>
     </ul>
@@ -26,32 +26,28 @@
 
 <script>
 import TodoItem from "./TodoItem.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Todo",
   data() {
     return {
       newTodoText: "",
-      todos: [],
     };
   },
   props: {
     msg: String,
   },
-  computed: {
-    todoCount() {
-      return this.todos.length;
-    },
-  },
+  computed: {},
   methods: {
-    addNewTodo() {
-      this.todos.push({
-        text: this.newTodoText,
-      });
+    ...mapActions(["addTodo", "removeTodo"]),
+    ...mapGetters(["getTodoCount", "getTodos"]),
+    onSubmitTodo() {
+      this.addTodo(this.newTodoText);
       this.newTodoText = "";
     },
-    removeTodo(idx) {
-      this.todos.splice(idx, 1);
+    onRemoveTodo(idx) {
+      this.removeTodo(idx);
     },
   },
   components: {
