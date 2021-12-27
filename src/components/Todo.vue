@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }} ({{ todoCount }})</h1>
+    <h1 class="message">{{ msg }} ({{ todoCount }})</h1>
 
     <form v-on:submit.prevent="addNewTodo">
       <label for="new-todo">Add a todo</label>
@@ -9,7 +9,7 @@
         id="new-todo"
         placeholder="E.g. Learn Vue.js"
       />
-      <button>Add</button>
+      <button id="add-btn">Add</button>
     </form>
 
     <ul>
