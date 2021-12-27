@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { ADD_TODO, REMOVE_TODO } from "./mutation-types";
+import { mutations } from "./mutations";
 
 const debug = process.env.NODE_ENV !== "production";
 
@@ -7,16 +8,7 @@ export default createStore({
   state: {
     todos: [],
   },
-  mutations: {
-    [ADD_TODO](state, todoText) {
-      state.todos.push({
-        text: todoText,
-      });
-    },
-    [REMOVE_TODO](state, idx) {
-      state.todos.splice(idx, 1);
-    },
-  },
+  mutations,
   getters: {
     getTodos: (state) => {
       return state.todos;
