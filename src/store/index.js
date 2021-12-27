@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { ADD_TODO, REMOVE_TODO } from "./mutation-types";
 import { mutations } from "./mutations";
+import { getters } from "./getters";
 
 const debug = process.env.NODE_ENV !== "production";
 
@@ -9,14 +10,7 @@ export default createStore({
     todos: [],
   },
   mutations,
-  getters: {
-    getTodos: (state) => {
-      return state.todos;
-    },
-    getTodoCount: (state) => {
-      return state.todos.length;
-    },
-  },
+  getters,
   actions: {
     addTodo({ commit }, todoText) {
       commit(ADD_TODO, todoText);
