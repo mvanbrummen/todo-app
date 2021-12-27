@@ -6,7 +6,7 @@ const addTodo = async (wrapper, text) => {
   await wrapper.find("form").trigger("submit"); // button click doesnt submit?
 };
 
-describe("HelloWorld.vue", () => {
+describe("Todo.vue", () => {
   it("renders props.msg when passed", () => {
     const msg = "new message";
     const wrapper = shallowMount(Todo, {
